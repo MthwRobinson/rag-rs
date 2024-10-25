@@ -15,5 +15,6 @@ async fn main() {
     let res = client.post(url).json(&parameters).send().await.unwrap();
     let output = res.json::<serde_json::Value>().await.unwrap();
 
-    dbg!(output);
+    dbg!(&output);
+    println!("{}", output.as_object().unwrap().get("response").unwrap());
 }
