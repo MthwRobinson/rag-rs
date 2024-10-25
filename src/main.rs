@@ -13,6 +13,7 @@ async fn main() {
 
     let client = reqwest::Client::new();
     let res = client.post(url).json(&parameters).send().await.unwrap();
+    let output = res.json::<serde_json::Value>().await.unwrap();
 
-    dbg!(res);
+    dbg!(output);
 }
